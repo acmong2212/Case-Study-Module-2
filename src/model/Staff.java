@@ -28,7 +28,6 @@ public class Staff implements Serializable {
         this.status = status;
     }
 
-
     public int getId() {
         return id;
     }

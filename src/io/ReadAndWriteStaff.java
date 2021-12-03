@@ -6,7 +6,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ReadAndWrite {
+public class ReadAndWriteStaff {
     public static List<Staff> readStaff() {
         try {
             File file = new File("staff.txt");
