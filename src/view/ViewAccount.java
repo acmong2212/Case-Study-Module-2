@@ -17,13 +17,15 @@ public class ViewAccount {
             switch (choice) {
                 case 1:
                     Account account = controllerAccount.signUpAccount();
-                    if (controllerAccount.signIn(account)) {
-                        ViewStaff.menuManagerStaff();
-                        break;
-                    }
                     if (controllerAccount.loginAdmin(account)) {
                         ViewStaff.menuManagerAdmin();
                         break;
+                    } else if (controllerAccount.signIn(account)) {
+                        ViewStaff.menuManagerStaff();
+                        break;
+                    } else {
+                        System.err.println("TÀI KHOẢN HOẶC MẬT KHẨU KHÔNG ĐÚNG. NHẬP LẠI XEM NÀO");
+                        menuSignInAndSignUp();
                     }
                 case 2:
                     controllerAccount.addAccount(controllerAccount.signUpAccount());
@@ -31,9 +33,4 @@ public class ViewAccount {
             }
         }
     }
-
-
-
-
-
 }
