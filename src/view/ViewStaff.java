@@ -1,5 +1,6 @@
 package view;
 
+import controller.ControllerAccount;
 import controller.ControllerStaff;
 import model.StaffFullTime;
 
@@ -9,16 +10,31 @@ public class ViewStaff {
     static Scanner scanner = new Scanner(System.in);
 
     public static void menuManagerAdmin() {
-        System.out.println("1. Sửa Account" + "\n"
-                + "2. Xoá Account" + "\n"
-                + "3. Hiển thị Account" + "\n"
-                + "4. Đăng xuất");
-        int choice = scanner.nextInt();
-        switch (choice) {
-            case 1:
-            case 2:
-            case 3:
-            case 4:
+        ControllerAccount controllerAccount = new ControllerAccount();
+
+        while (true) {
+            System.out.println("1. Sửa Account" + "\n"
+                    + "2. Xoá Account" + "\n"
+                    + "3. Hiển thị Account" + "\n"
+                    + "4. Đăng xuất");
+            int choice = scanner.nextInt();
+            switch (choice) {
+                case 1:
+                    System.out.println("Nhập tên Account bạn muốn sửa: ");
+                    int index = controllerAccount.findIndexAccount();
+                    controllerAccount.edit(index, controllerAccount.updateAccount());
+                    break;
+                case 2:
+                    controllerAccount.deleteAccount();
+                    break;
+                case 3:
+                    controllerAccount.displayAccount();
+                    break;
+                case 4:
+                    System.out.println("ĐÃ ĐĂNG XUẤT!!");
+                    ViewAccount.menuSignInAndSignUp();
+                    break;
+            }
         }
     }
 
@@ -36,7 +52,7 @@ public class ViewStaff {
                     + "7. Thay đổi trạng thái của nhân viên" + "\n"
                     + "8. Tính tiền lương của nhân viên" + "\n"
                     + "9. Phân loại nhân viên" + "\n"
-                    + "0. Thoát");
+                    + "0. Đăng xuất");
             int choice = scanner.nextInt();
             switch (choice) {
                 case 1:
@@ -81,7 +97,8 @@ public class ViewStaff {
                     break;
                 case 8:
                 case 0:
-                    System.exit(0);
+                    System.out.println("ĐÃ ĐĂNG XUẤT!!");
+                    ViewAccount.menuSignInAndSignUp();
                     break;
             }
         }
