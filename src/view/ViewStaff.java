@@ -9,7 +9,7 @@ import java.util.Scanner;
 public class ViewStaff {
     static Scanner scanner = new Scanner(System.in);
 
-    public static void menuManagerAdmin() {
+    public static int menuManagerAdmin() {
         ControllerAccount controllerAccount = new ControllerAccount();
 
         while (true) {
@@ -17,13 +17,23 @@ public class ViewStaff {
                     + "2. Xoá Account" + "\n"
                     + "3. Hiển thị Account" + "\n"
                     + "4. Đăng xuất");
-            int choice = scanner.nextInt();
+            int choice = 0;
+            try {
+                choice = Integer.parseInt(scanner.nextLine());
+                if (choice != 1 && choice != 2 && choice != 3 && choice != 4) {
+                    System.err.println("Bạn chỉ có thể lựa chọn 1 đến 4");
+                    return menuManagerAdmin();
+                }
+            }catch (Exception e) {
+                System.err.println("Nhập số cơ mà");
+                return menuManagerAdmin();
+            }
             switch (choice) {
                 case 1:
                     System.out.println("Nhập tên Account bạn muốn sửa: ");
                     int index = controllerAccount.findIndexAccount();
                     controllerAccount.edit(index, controllerAccount.updateAccount());
-                    break;
+                    break;//validate
                 case 2:
                     controllerAccount.deleteAccount();
                     break;
@@ -38,7 +48,7 @@ public class ViewStaff {
         }
     }
 
-    public static void menuManagerStaff() {
+    public static int menuManagerStaff() {
         ControllerStaff controllerStaff = new ControllerStaff();
 
         while (true) {
@@ -53,16 +63,27 @@ public class ViewStaff {
                     + "8. Tính tiền lương của nhân viên" + "\n"
                     + "9. Phân loại nhân viên" + "\n"
                     + "0. Đăng xuất");
-            int choice = scanner.nextInt();
+            int choice = 0;
+            try {
+                choice = Integer.parseInt(scanner.nextLine());
+                if (choice != 1 && choice != 2 && choice != 3 && choice != 4 && choice != 5 && choice != 6 && choice != 7 && choice != 8 && choice != 9 && choice != 0) {
+                    System.err.println("Bạn chỉ có thể lựa chọn 0 đến 9");
+                    return menuManagerStaff();
+                }
+            } catch (Exception e){
+                System.err.println("Mắc gì nhập chữ? Đăng nhập lại bạn nhé!");
+            }
             switch (choice) {
                 case 1:
                     controllerStaff.displayStaff();
                     break;
                 case 2:
                     System.out.println("Bạn muốn thêm?" + "\n"
-                            + "1. Thêm nhân viên Full Time" + "\n"
-                            + "2. Thêm nhân viên Part Time ");
-                    int choiceAdd = scanner.nextInt();
+                            + "1. Nhân viên Full Time" + "\n"
+                            + "2. Nhân viên Part Time " + "\n"
+                            + "3. Quay lại màn hình chính" + "\n"
+                            + "4. Đăng xuất");
+                    int choiceAdd = Integer.parseInt(scanner.nextLine());
                     switch (choiceAdd) {
                         case 1:
                             controllerStaff.add(controllerStaff.addStaff(true));
@@ -70,11 +91,17 @@ public class ViewStaff {
                         case 2:
                             controllerStaff.add(controllerStaff.addStaff(false));
                             break;
+                        case 3:
+                            menuManagerStaff();
+                            break;
+                        case 4:
+                            ViewAccount.menuSignInAndSignUp();
+                            break;
                     }
                     break;
                 case 3:
+                    System.out.println("Bạn muốn sửa nhân viên nào?");
                     int index = controllerStaff.findIndex();
-
                     if (index != -1) {
                         if (controllerStaff.findAll().get(index) instanceof StaffFullTime) {
                             controllerStaff.edit(index, controllerStaff.updateStaff(true, index));

@@ -97,17 +97,27 @@ public class ControllerAccount {
             }
         }
         return -1;
+    }//validate
+
+    public int findIndexAccountDelete() {
+        String userName = scanner.nextLine();
+        for (int i = 0; i < accountList.size(); i++) {
+            if (accountList.get(i).getUserName().equals(userName)) {
+                return i;
+            }
+        }
+        return -1;
     }
 
     public void deleteAccount() {
         System.out.println("Nhập tên Account bạn muốn xoá: ");
-        int index = findIndexAccount();
+        int index = findIndexAccountDelete();
         if (index >= 0) {
             accountList.remove(index);
             System.out.println("ĐÃ XOÁ ACCOUNT NÀY!!");
         }
         ReadAndWriteAccount.writeAccount(accountList);
-    }
+    }//validate
 
     public void edit(int index, Account account) {
         accountList.set(index, account);

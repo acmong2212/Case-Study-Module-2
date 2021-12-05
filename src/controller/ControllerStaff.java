@@ -8,6 +8,7 @@ import model.StaffPartTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 public class ControllerStaff implements Manager {
 
@@ -33,7 +34,6 @@ public class ControllerStaff implements Manager {
     }
 
     public int findIndex() {
-        System.out.println("Nhập tên cần thao tác: ");
         String name = scanner.nextLine();
         for (int i = 0; i < staffList.size(); i++) {
             if (staffList.get(i).getName().equals(name)) {
@@ -65,7 +65,8 @@ public class ControllerStaff implements Manager {
         if (check) {
             System.out.println(staffList.get(index));
         } else {
-            System.err.println("TÊN NÀY KHÔNG CÓ TRONG DANH SÁCH!!!");
+            System.err.println("Nhân viên này không có trong danh sách!!!");
+            searchStaff();
         }
     }
 
@@ -118,12 +119,47 @@ public class ControllerStaff implements Manager {
         } else {
             id = staffList.get(staffList.size() - 1).getId() + 1;
         }
-        System.out.println("Nhập tên:");
-        String name = scanner.nextLine();
+
+        String name;
+        while (true) {
+            System.out.println("Nhập tên:");
+            name = scanner.nextLine();
+            Pattern pattern = Pattern.compile("^[a-zA-Z_ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶ\" +\n" +
+                    "\"ẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợ\" +\n" +
+                    "\"ụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\\\\s]+$");
+            if (pattern.matcher(name).find()) {
+                break;
+            } else {
+                System.err.println("Họ và tên không bao gồm số và kí tự đặc biệt");
+            }
+        }
+
         System.out.println("Nhập tuổi:");
         int age = Integer.parseInt(scanner.nextLine());
-        System.out.println("Nhập địa chỉ:");
-        String address = scanner.nextLine();
+        if (age < 18) {
+            System.err.println("Bạn chưa đủ tuổi để đi làm");
+            addStaff(true);
+        } else if (age > 60) {
+            System.err.println("Chú đã tuổi về hưu, đi làm nữa chi chú");
+            addStaff(true);
+        } else {
+            System.err.println("Oh! Tuổi này khá hợp với công việc đấy, nhập tiếp đi");
+        }
+
+        String address;
+        while (true) {
+            System.out.println("Nhập địa chỉ:");
+            address = scanner.nextLine();
+            Pattern pattern = Pattern.compile("^[a-zA-Z_ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶ\" +\n" +
+                    "\"ẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợ\" +\n" +
+                    "\"ụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\\\\s]+$");
+            if (pattern.matcher(address).find()) {
+                break;
+            } else {
+                System.err.println("Địa chỉ bao không bao gồm số và các ký tự đặc biệt bạn nhé");
+            }
+        }
+
         System.out.println("Nhập trạng thái:");
         boolean status = Boolean.parseBoolean(scanner.nextLine());
 
@@ -138,19 +174,53 @@ public class ControllerStaff implements Manager {
             System.out.println("ĐÃ THÊM NHÂN VIÊN NÀY!!!");
             return new StaffPartTime(id, name, age, address, status, workTime);
         }
-    }
+    }//fix validate
 
     @Override
     public Staff updateStaff(boolean isStaffFullTime, int index) {
         int id;
         id = staffList.get(index).getId();
 
-        System.out.println("Nhập tên mới của nhân viên này:");
-        String name = scanner.nextLine();
+        String name;
+        while (true) {
+            System.out.println("Nhập tên mới của nhân viên này:");
+            name = scanner.nextLine();
+            Pattern pattern = Pattern.compile("^[a-zA-Z_ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶ\" +\n" +
+                    "\"ẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợ\" +\n" +
+                    "\"ụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\\\\s]+$");
+            if (pattern.matcher(name).find()) {
+                break;
+            } else {
+                System.err.println("Họ và tên không bao gồm số và kí tự đặc biệt");
+            }
+        }
+
         System.out.println("Nhập tuổi mới của nhân viên này:");
         int age = Integer.parseInt(scanner.nextLine());
-        System.out.println("Nhập địa chỉ mới của nhân viên này:");
-        String address = scanner.nextLine();
+        if (age < 18) {
+            System.err.println("Bạn chưa đủ tuổi để đi làm");
+            addStaff(true);
+        } else if (age > 60) {
+            System.err.println("Chú đã tuổi về hưu, đi làm nữa chi chú");
+            addStaff(true);
+        } else {
+            System.err.println("Oh! Tuổi này khá hợp với công việc đấy, nhập tiếp đi");
+        }
+
+        String address;
+        while (true) {
+            System.out.println("Nhập địa chỉ mới của nhân viên này:");
+            address = scanner.nextLine();
+            Pattern pattern = Pattern.compile("^[a-zA-Z_ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶ\" +\n" +
+                    "\"ẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợ\" +\n" +
+                    "\"ụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\\\\s]+$");
+            if (pattern.matcher(address).find()) {
+                break;
+            } else {
+                System.err.println("Địa chỉ bao không bao gồm số và các ký tự đặc biệt bạn nhé");
+            }
+        }
+
         System.out.println("Nhập trạng thái mới của nhân viên này:");
         boolean status = Boolean.parseBoolean(scanner.nextLine());
 
@@ -165,16 +235,47 @@ public class ControllerStaff implements Manager {
             System.out.println("ĐÃ SỬA NHÂN VIÊN NÀY!!!");
             return new StaffPartTime(id, name, age, address, status, workTime);
         }
-    }
-
+    }//fix validate
 
     @Override
     public void deleteStaff() {
-        int index = findIndex();
-        if (index >= 0) {
-            staffList.remove(index);
-            System.out.println("ĐÃ XOÁ NHÂN VIÊN NÀY!!");
+        String name ;
+        while (true) {
+            System.out.println("Bạn muốn xoá ai vậy? ");
+            name = scanner.nextLine();
+            int index = -1;
+            boolean check = false;
+            Pattern pattern = Pattern.compile("[^0-9]");
+            if (pattern.matcher(name).find()) {
+                for (int i = 0; i < staffList.size(); i++) {
+                    if (name.contains(staffList.get(i).getName())) {
+                        check = true;
+                        index = staffList.indexOf(staffList.get(i));
+                    }
+                }
+                if (check) {
+                    staffList.remove(index);
+                    System.out.println("Đã xoá nhân viên này!!!");
+                } else {
+                    System.err.println("Nhân viên này không có trong công ty!!!");
+                    System.out.println("Rốt cuộc...");
+                    deleteStaff();
+                }
+                break;
+            } else {
+                System.err.println("Tên người có số hả mại?");
+                System.out.println("Rốt cuộc...");
+            }
         }
+//        System.out.println("Bạn muốn xoá ai vậy?");
+//        int index = findIndex();
+//        if (index >= 0) {
+//            staffList.remove(index);
+//            System.out.println("ĐÃ XOÁ NHÂN VIÊN NÀY!!");
+//        } else {
+//            System.err.println("Không có nhân viên này trong công ty");
+//            deleteStaff();
+//        }
         ReadAndWriteStaff.writeStaff(staffList);
     }
 

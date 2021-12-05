@@ -3,16 +3,12 @@ package view;
 import controller.ControllerAccount;
 import model.Account;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
-import java.util.regex.Pattern;
 
 public class ViewAccount {
     public static void menuSignInAndSignUp() {
         Scanner scanner = new Scanner(System.in);
         ControllerAccount controllerAccount = new ControllerAccount();
-        List<Account> accountList = new ArrayList<>();
 
         while (true) {
             System.out.println("1. Đăng nhập" + "\n"
@@ -27,7 +23,6 @@ public class ViewAccount {
             } catch (Exception e) {
                 System.err.println("Nhập số cơ mà");
             }
-
             switch (choice) {
                 case 1:
                     Account account = controllerAccount.signInAdmin();
