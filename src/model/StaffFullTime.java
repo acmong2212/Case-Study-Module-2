@@ -1,25 +1,41 @@
 package model;
 
 public class StaffFullTime extends Staff {
-    private int workingTime;
+    private int workingTimeOnMonth;
+    private int salaryOnHour;
 
-    public StaffFullTime(int id, String name, int age, String address, boolean status, int workingTime) {
-        super(id, name, age, address, status);
-        this.workingTime = workingTime;
+    public StaffFullTime(int id, String name, int age, String address, boolean status, boolean isClassify, int workingTimeOnMonth, int salaryOnHour) {
+        super(id, name, age, address, status, isClassify);
+        this.workingTimeOnMonth = workingTimeOnMonth;
+        this.salaryOnHour = salaryOnHour;
     }
 
-    public double getWorkingTime() {
-        return workingTime;
+    public StaffFullTime(int workingTimeOnMonth, int salaryOnHour) {
+        this.workingTimeOnMonth = workingTimeOnMonth;
+        this.salaryOnHour = salaryOnHour;
     }
 
-    public void setWorkingTime(int workingTime) {
-        this.workingTime = workingTime;
+    public int getWorkingTimeOnMonth() {
+        return workingTimeOnMonth;
+    }
+
+    public void setWorkingTimeOnMonth(int workingTimeOnMonth) {
+        this.workingTimeOnMonth = workingTimeOnMonth;
+    }
+
+    public int getSalaryOnHour() {
+        return salaryOnHour;
+    }
+
+    public void setSalaryOnHour(int salaryOnHour) {
+        this.salaryOnHour = salaryOnHour;
     }
 
     @Override
     public String toString() {
         return "Staff FullTime{" + super.toString() +
-                "workingTime= " + workingTime +
+                "workingTimeOnMonth=" + workingTimeOnMonth +
+                ", salaryOnHour=" + salaryOnHour +
                 '}';
     }
 }

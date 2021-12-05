@@ -123,6 +123,9 @@ public class ViewStaff {
                     controllerStaff.updateStatus();
                     break;
                 case 8:
+                case 9:
+                    controllerStaff.employeeClassification();
+                    break;
                 case 0:
                     System.out.println("ĐÃ ĐĂNG XUẤT!!");
                     ViewAccount.menuSignInAndSignUp();

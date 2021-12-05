@@ -162,17 +162,24 @@ public class ControllerStaff implements Manager {
 
         System.out.println("Nhập trạng thái:");
         boolean status = Boolean.parseBoolean(scanner.nextLine());
+        System.out.println("Nhập trạng thái phân loại nhân viên:");
+        boolean isClassify = Boolean.parseBoolean(scanner.nextLine());
 
         if (isStaffFullTime) {
-            System.out.println("Nhập thời gian làm việc full time:");
-            int workTime = Integer.parseInt(scanner.nextLine());
+            System.out.println("Nhập số giờ làm việc trong tháng full time:");
+            int workTimeOnMonth = Integer.parseInt(scanner.nextLine());
+            System.out.println("Nhập lương theo giờ full time:");
+            int salaryOnHour = Integer.parseInt(scanner.nextLine());
             System.out.println("ĐÃ THÊM NHÂN VIÊN NÀY!!!");
-            return new StaffFullTime(id, name, age, address, status, workTime);
+
+            return new StaffFullTime(id, name, age, address, status, isClassify, workTimeOnMonth, salaryOnHour);
         } else {
-            System.out.println("Nhập thời gian làm việc part time:");
-            int workTime = Integer.parseInt(scanner.nextLine());
+            System.out.println("Nhập số giờ làm việc trong tháng part time:");
+            int workTimeOnMonth = Integer.parseInt(scanner.nextLine());
+            System.out.println("Nhập lương theo giờ part time:");
+            int salaryOnHour = Integer.parseInt(scanner.nextLine());
             System.out.println("ĐÃ THÊM NHÂN VIÊN NÀY!!!");
-            return new StaffPartTime(id, name, age, address, status, workTime);
+            return new StaffPartTime(id, name, age, address, status, isClassify, workTimeOnMonth, salaryOnHour);
         }
     }//fix validate
 
@@ -223,23 +230,29 @@ public class ControllerStaff implements Manager {
 
         System.out.println("Nhập trạng thái mới của nhân viên này:");
         boolean status = Boolean.parseBoolean(scanner.nextLine());
+        System.out.println("Nhập trạng thái phân loại nhân viên: ");
+        boolean isClassify = Boolean.parseBoolean(scanner.nextLine());
 
         if (isStaffFullTime) {
-            System.out.println("Nhập thời gian làm việc full time:");
-            int workTime = Integer.parseInt(scanner.nextLine());
+            System.out.println("Nhập số giờ làm việc trong tháng full time:");
+            int workTimeOnMonth = Integer.parseInt(scanner.nextLine());
+            System.out.println("Nhập lương theo giờ full time:");
+            int salaryOnHour = Integer.parseInt(scanner.nextLine());
             System.out.println("ĐÃ SỬA NHÂN VIÊN NÀY!!!");
-            return new StaffFullTime(id, name, age, address, status, workTime);
+            return new StaffFullTime(id, name, age, address, status, isClassify, workTimeOnMonth, salaryOnHour);
         } else {
-            System.out.println("Nhập thời gian làm việc part time:");
-            int workTime = Integer.parseInt(scanner.nextLine());
+            System.out.println("Nhập số giờ làm việc trong tháng part time:");
+            int workTimeOnMonth = Integer.parseInt(scanner.nextLine());
+            System.out.println("Nhập lương theo giờ part time:");
+            int salaryOnHour = Integer.parseInt(scanner.nextLine());
             System.out.println("ĐÃ SỬA NHÂN VIÊN NÀY!!!");
-            return new StaffPartTime(id, name, age, address, status, workTime);
-        }
+            return new StaffPartTime(id, name, age, address, status, isClassify, workTimeOnMonth, salaryOnHour);
+        }//validate khong tim thay ten de sua
     }//fix validate
 
     @Override
     public void deleteStaff() {
-        String name ;
+        String name;
         while (true) {
             System.out.println("Bạn muốn xoá ai vậy? ");
             name = scanner.nextLine();
@@ -286,6 +299,19 @@ public class ControllerStaff implements Manager {
 
     @Override
     public void employeeClassification() {
-
+        System.out.println("Bạn muốn phân loại nhân viên nào??");
+        String name = scanner.nextLine();
+        boolean check = false;
+        for (Staff staff : staffList) {
+            if (staff.getName().equals(name) && staff.isClassify()) {
+                check = true;
+                break;
+            }
+        }
+        if (check) {
+            System.out.println("Nhân viên " + name + " là nhân viên full time");
+        } else {
+            System.out.println("Nhân viên " + name + " là nhân viên part time");
+        }
     }
 }

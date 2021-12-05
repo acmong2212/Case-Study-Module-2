@@ -8,24 +8,19 @@ public class Staff implements Serializable {
     private int age;
     private String address;
     private boolean status;
+    private boolean isClassify;
 
-    public Staff(int id, String name, int age, String address, boolean status) {
+    public Staff(int id, String name, int age, String address, boolean status, boolean isClassify) {
         this.id = id;
         this.name = name;
         this.age = age;
         this.address = address;
         this.status = status;
+        this.isClassify = isClassify;
     }
 
     public Staff() {
-    }
 
-    public boolean isStatus() {
-        return status;
-    }
-
-    public void setStatus(boolean status) {
-        this.status = status;
     }
 
     public int getId() {
@@ -60,13 +55,30 @@ public class Staff implements Serializable {
         this.address = address;
     }
 
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+
+    public boolean isClassify() {
+        return isClassify;
+    }
+
+    public void setClassify(boolean classify) {
+        isClassify = classify;
+    }
+
     @Override
     public String toString() {
-        return "id= " + id +
-                ", name= " + name +
-                ", age= " + age +
-                ", address= " + address +
-                ", status= " + status +
-                ", ";
+        return
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                ", address='" + address + '\'' +
+                ", status=" + status +
+                ", isClassify=" + isClassify + ", ";
     }
 }
