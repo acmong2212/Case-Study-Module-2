@@ -62,8 +62,8 @@ public class ViewStaff {
                     + "3. Sửa nhân viên" + "\n"
                     + "4. Xoá nhân viên" + "\n"
                     + "5. Tìm kiếm nhân viên" + "\n"
-                    + "6. Kiểm tra trạng thái của nhân viên" + "\n"
-                    + "7. Thay đổi trạng thái của nhân viên" + "\n"
+                    + "6. Kiểm tra trạng thái làm việc của nhân viên" + "\n"
+                    + "7. Thay đổi trạng thái làm việc của nhân viên" + "\n"
                     + "8. Tính tiền lương của nhân viên" + "\n"
                     + "9. Phân loại nhân viên" + "\n"
                     + "10. Hiển thị tương đối nhân viên" + "\n"
@@ -72,11 +72,12 @@ public class ViewStaff {
             try {
                 choice = Integer.parseInt(scanner.nextLine());
                 if (choice != 1 && choice != 2 && choice != 3 && choice != 4 && choice != 5 && choice != 6 && choice != 7 && choice != 8 && choice != 9 && choice != 10 && choice != 0) {
-                    System.err.println("Bạn chỉ có thể lựa chọn 0 đến 9");
+                    System.err.println("Bạn chỉ có thể lựa chọn 0 đến 10");
                     return menuManagerStaff();
                 }
             } catch (Exception e) {
-                System.err.println("Mắc gì nhập chữ? Đăng nhập lại bạn nhé!");
+                System.err.println("Mắc gì nhập chữ?");
+                return menuManagerStaff();
             }
             switch (choice) {
                 case 1:
@@ -88,7 +89,15 @@ public class ViewStaff {
                             + "2. Nhân viên Part Time " + "\n"
                             + "3. Quay lại màn hình chính" + "\n"
                             + "4. Đăng xuất");
-                    int choiceAdd = Integer.parseInt(scanner.nextLine());
+                    int choiceAdd = 0;
+                    try {
+                        choiceAdd = Integer.parseInt(scanner.nextLine());
+                        if (choiceAdd != 1 && choiceAdd != 2 && choiceAdd != 3 && choiceAdd != 4) {
+                            System.err.println("Bạn chỉ có thể lựa chọn từ 1 đến 4! Chọn lại đi nhé");
+                        }
+                    } catch (Exception e) {
+                        System.err.println("Mắc gì nhập chữ? Chọn lại đi nhé");
+                    }
                     switch (choiceAdd) {
                         case 1:
                             controllerStaff.add(controllerStaff.addStaff(true));
@@ -113,6 +122,8 @@ public class ViewStaff {
                         } else {
                             controllerStaff.edit(index, controllerStaff.updateStaff(false, index));
                         }
+                    } else {
+                        System.err.println("Nhân viên này không có trong công ty!!");
                     }
                     break;
                 case 4:

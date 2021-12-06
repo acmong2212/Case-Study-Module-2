@@ -80,16 +80,15 @@ public class ControllerStaff implements Manager {
         if (check) {
             System.out.println(staffList.get(index));
         } else {
-            System.err.println("Nhân viên này không có trong danh sách!!!");
+            System.err.println("Làm gì có");
             System.out.println("Rốt cuộc...");
             searchStaff();
         }
     }
 
-
     @Override
     public void checkStatus() {
-        System.out.println("Bạn muốn kiểm tra trạng thái của ai? Hãy nhập tên người đó: ");
+        System.out.println("Bạn muốn kiểm tra trạng thái làm việc của ai?");
         String name = scanner.nextLine();
         for (Staff staff : staffList) {
             if (staff.getName().equals(name)) {
@@ -104,7 +103,7 @@ public class ControllerStaff implements Manager {
 
     @Override
     public void updateStatus() {
-        System.out.println("Bạn muốn thay đổi trạng thái của nhân viên nào? Hãy nhập tên người đó: ");
+        System.out.println("Bạn muốn thay đổi trạng thái làm việc của nhân viên nào?");
         String name = scanner.nextLine();
         int index = -1;
         boolean check = false;
@@ -123,7 +122,7 @@ public class ControllerStaff implements Manager {
             System.out.println(staffList.get(index));
             ReadAndWriteStaff.writeStaff(staffList);
         } else {
-            System.err.println("TÊN NÀY KHÔNG CÓ TRONG DANH SÁCH!!!");
+            System.err.println("Nhân viên này không có tên trong công ty!!!");
         }
     }
 
@@ -191,10 +190,10 @@ public class ControllerStaff implements Manager {
                 try {
                     System.out.println("Nhập số giờ làm việc trong tháng full time:");
                     workTimeOnMonth = Integer.parseInt(scanner.nextLine());
-                    if (workTimeOnMonth >= 30 && workTimeOnMonth <= 60) {
+                    if (workTimeOnMonth >= 50 && workTimeOnMonth <= 60) {
                         checkWorkingOnMonth = false;
-                    } else if (workTimeOnMonth < 30) {
-                        System.err.println("Thời làm gian full time tối thiểu là 50 giờ/tháng anh bạn nhé!");
+                    } else if (workTimeOnMonth < 50) {
+                        System.err.println("Thời làm gian full time tối thiểu là 50 giờ/tháng và tối đa là 60 giờ/tháng anh bạn nhé!");
                     } else {
                         System.err.println("Làm vừa vừa thôi, làm nhiều quá tiền đâu mà tiêu cho hết");
                     }
@@ -209,10 +208,10 @@ public class ControllerStaff implements Manager {
                 try {
                     System.out.println("Nhập lương theo giờ full time:");
                     salaryOnHour = Integer.parseInt(scanner.nextLine());
-                    if (salaryOnHour >= 30000 && salaryOnHour <= 50000) {
+                    if (salaryOnHour >= 40000 && salaryOnHour <= 50000) {
                         checkSalaryOnHour = false;
-                    } else if (salaryOnHour < 30000) {
-                        System.err.println("Tiền lương full time tối thiểu là 30.000VNĐ/Giờ anh bạn nhé!");
+                    } else if (salaryOnHour < 40000) {
+                        System.err.println("Tiền lương full time tối thiểu là 40.000VNĐ/Giờ anh bạn nhé!");
                     } else {
                         System.err.println("Tiền lương tối đa là 50.000VNĐ/Giờ thôi má ơiiii");
                     }
@@ -228,10 +227,10 @@ public class ControllerStaff implements Manager {
                 try {
                     System.out.println("Nhập số giờ làm việc trong tháng part time:");
                     workTimeOnMonth = Integer.parseInt(scanner.nextLine());
-                    if (workTimeOnMonth >= 30 && workTimeOnMonth <= 60) {
+                    if (workTimeOnMonth >= 30 && workTimeOnMonth <= 40) {
                         checkWorkingOnMonth = false;
                     } else if (workTimeOnMonth < 30) {
-                        System.err.println("Thời làm gian part time tối thiểu là 50 giờ/tháng anh bạn nhé!");
+                        System.err.println("Thời làm gian part time tối thiểu là 30 giờ/tháng và tối đa là 40 giờ/tháng anh bạn nhé!");
                     } else {
                         System.err.println("Làm vừa vừa thôi, làm nhiều quá tiền đâu mà tiêu cho hết");
                     }
@@ -246,12 +245,12 @@ public class ControllerStaff implements Manager {
                 try {
                     System.out.println("Nhập lương theo giờ part time:");
                     salaryOnHour = Integer.parseInt(scanner.nextLine());
-                    if (salaryOnHour >= 30000 && salaryOnHour <= 50000) {
+                    if (salaryOnHour >= 30000 && salaryOnHour <= 40000) {
                         checkSalaryOnHour = false;
                     } else if (salaryOnHour < 30000) {
-                        System.err.println("Tiền lương full time tối thiểu là 30.000VNĐ/Giờ anh bạn nhé!");
+                        System.err.println("Tiền lương part time tối thiểu là 30.000VNĐ/Giờ anh bạn nhé!");
                     } else {
-                        System.err.println("Tiền lương tối đa là 50.000VNĐ/Giờ thôi má ơiiii");
+                        System.err.println("Tiền lương tối đa là 40.000VNĐ/Giờ thôi má ơiiii");
                     }
                 } catch (Exception e) {
                     System.err.println("Tiền lương phải là số không bao gồm chữ và kí tự đặc biệt anh bạn nhé");
@@ -323,10 +322,10 @@ public class ControllerStaff implements Manager {
                 try {
                     System.out.println("Nhập số giờ làm việc trong tháng full time:");
                     workTimeOnMonth = Integer.parseInt(scanner.nextLine());
-                    if (workTimeOnMonth >= 30 && workTimeOnMonth <= 60) {
+                    if (workTimeOnMonth >= 50 && workTimeOnMonth <= 60) {
                         checkWorkingOnMonth = false;
-                    } else if (workTimeOnMonth < 30) {
-                        System.err.println("Thời làm gian full time tối thiểu là 50 giờ/tháng anh bạn nhé!");
+                    } else if (workTimeOnMonth < 50) {
+                        System.err.println("Thời làm gian full time tối thiểu là 50 giờ/tháng và tối đa là 60 giờ/tháng anh bạn nhé!");
                     } else {
                         System.err.println("Làm vừa vừa thôi, làm nhiều quá tiền đâu mà tiêu cho hết");
                     }
@@ -341,10 +340,10 @@ public class ControllerStaff implements Manager {
                 try {
                     System.out.println("Nhập lương theo giờ full time:");
                     salaryOnHour = Integer.parseInt(scanner.nextLine());
-                    if (salaryOnHour >= 30000 && salaryOnHour <= 50000) {
+                    if (salaryOnHour >= 40000 && salaryOnHour <= 50000) {
                         checkSalaryOnHour = false;
-                    } else if (salaryOnHour < 30000) {
-                        System.err.println("Tiền lương full time tối thiểu là 30.000VNĐ/Giờ anh bạn nhé!");
+                    } else if (salaryOnHour < 40000) {
+                        System.err.println("Tiền lương full time tối thiểu là 40.000VNĐ/Giờ anh bạn nhé!");
                     } else {
                         System.err.println("Tiền lương tối đa là 50.000VNĐ/Giờ thôi má ơiiii");
                     }
@@ -360,10 +359,10 @@ public class ControllerStaff implements Manager {
                 try {
                     System.out.println("Nhập số giờ làm việc trong tháng part time:");
                     workTimeOnMonth = Integer.parseInt(scanner.nextLine());
-                    if (workTimeOnMonth >= 30 && workTimeOnMonth <= 60) {
+                    if (workTimeOnMonth >= 30 && workTimeOnMonth <= 40) {
                         checkWorkingOnMonth = false;
                     } else if (workTimeOnMonth < 30) {
-                        System.err.println("Thời làm gian full time tối thiểu là 50 giờ/tháng anh bạn nhé!");
+                        System.err.println("Thời làm gian part time tối thiểu là 30 giờ/tháng và tối đa là 40 giờ/tháng anh bạn nhé!");
                     } else {
                         System.err.println("Làm vừa vừa thôi, làm nhiều quá tiền đâu mà tiêu cho hết");
                     }
@@ -371,18 +370,19 @@ public class ControllerStaff implements Manager {
                     System.err.println("Số giờ làm việc trong tháng phải là số không bao gồm chữ và kí tự đặc biệt anh bạn nhé");
                 }
             }
+
             int salaryOnHour = 0;
             boolean checkSalaryOnHour = true;
             while (checkSalaryOnHour) {
                 try {
                     System.out.println("Nhập lương theo giờ part time:");
                     salaryOnHour = Integer.parseInt(scanner.nextLine());
-                    if (salaryOnHour >= 30000 && salaryOnHour <= 50000) {
+                    if (salaryOnHour >= 30000 && salaryOnHour <= 40000) {
                         checkSalaryOnHour = false;
                     } else if (salaryOnHour < 30000) {
-                        System.err.println("Tiền lương full time tối thiểu là 30.000VNĐ/Giờ anh bạn nhé!");
+                        System.err.println("Tiền lương part time tối thiểu là 30.000VNĐ/Giờ anh bạn nhé!");
                     } else {
-                        System.err.println("Tiền lương tối đa là 50.000VNĐ/Giờ thôi má ơiiii");
+                        System.err.println("Tiền lương tối đa là 40.000VNĐ/Giờ thôi má ơiiii");
                     }
                 } catch (Exception e) {
                     System.err.println("Tiền lương phải là số không bao gồm chữ và kí tự đặc biệt anh bạn nhé");
@@ -391,7 +391,7 @@ public class ControllerStaff implements Manager {
 
             System.out.println("ĐÃ SỬA NHÂN VIÊN NÀY!!!");
             return new StaffPartTime(id, name, age, address, true, false, workTimeOnMonth, salaryOnHour);
-        }//validate khong tim thay ten de sua
+        }
     }
 
     @Override
@@ -424,15 +424,6 @@ public class ControllerStaff implements Manager {
                 System.out.println("Rốt cuộc...");
             }
         }
-//        System.out.println("Bạn muốn xoá ai vậy?");
-//        int index = findIndex();
-//        if (index >= 0) {
-//            staffList.remove(index);
-//            System.out.println("ĐÃ XOÁ NHÂN VIÊN NÀY!!");
-//        } else {
-//            System.err.println("Không có nhân viên này trong công ty");
-//            deleteStaff();
-//        }
         ReadAndWriteStaff.writeStaff(staffList);
     }
 
@@ -447,8 +438,11 @@ public class ControllerStaff implements Manager {
                 } else {
                     System.out.println("Lương part time của nhân viên " + name + " là " + ((StaffPartTime) staff).getPayRoll() + " VNĐ");
                 }
-                break;
-            }//validate k tim thay
+                return;
+            } else {
+                System.err.println("Không có nhân viên này trong công ty!!");
+            }
+            return;
         }
     }
 
@@ -461,12 +455,12 @@ public class ControllerStaff implements Manager {
             if (staff.getName().equals(name) && staff.isClassify()) {
                 check = true;
                 break;
-            }//validate k tim thay
+            }
         }
         if (check) {
-            System.out.println("Nhân viên " + name + " đang làm full time");
+            System.out.println("Nhân viên " + "'" + name + "'" + " đang làm full time");
         } else {
-            System.out.println("Nhân viên " + name + " đang làm part time");
+            System.out.println("Nhân viên " + "'" + name + "'" + " đang làm part time");
         }
     }
 }
