@@ -24,7 +24,7 @@ public class ViewStaff {
                     System.err.println("Bạn chỉ có thể lựa chọn 1 đến 4");
                     return menuManagerAdmin();
                 }
-            }catch (Exception e) {
+            } catch (Exception e) {
                 System.err.println("Nhập số cơ mà");
                 return menuManagerAdmin();
             }
@@ -32,7 +32,7 @@ public class ViewStaff {
                 case 1:
                     System.out.println("Bạn muốn sửa Account nào?: ");
                     int index = controllerAccount.findIndexAccount();
-                    if(index>-1){
+                    if (index > -1) {
                         controllerAccount.edit(index, controllerAccount.updateAccount());
                     } else {
                         System.err.println("Không có Account này trong danh sách, chọn lại nhé!!");
@@ -75,7 +75,7 @@ public class ViewStaff {
                     System.err.println("Bạn chỉ có thể lựa chọn 0 đến 9");
                     return menuManagerStaff();
                 }
-            } catch (Exception e){
+            } catch (Exception e) {
                 System.err.println("Mắc gì nhập chữ? Đăng nhập lại bạn nhé!");
             }
             switch (choice) {

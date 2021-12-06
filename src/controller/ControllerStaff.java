@@ -231,7 +231,7 @@ public class ControllerStaff implements Manager {
                     if (workTimeOnMonth >= 30 && workTimeOnMonth <= 60) {
                         checkWorkingOnMonth = false;
                     } else if (workTimeOnMonth < 30) {
-                        System.err.println("Thời làm gian full time tối thiểu là 50 giờ/tháng anh bạn nhé!");
+                        System.err.println("Thời làm gian part time tối thiểu là 50 giờ/tháng anh bạn nhé!");
                     } else {
                         System.err.println("Làm vừa vừa thôi, làm nhiều quá tiền đâu mà tiêu cho hết");
                     }
@@ -261,7 +261,7 @@ public class ControllerStaff implements Manager {
             System.out.println("ĐÃ THÊM NHÂN VIÊN NÀY!!!");
             return new StaffPartTime(id, name, age, address, true, false, workTimeOnMonth, salaryOnHour);
         }
-    }//fix validate
+    }
 
     @Override
     public Staff updateStaff(boolean isStaffFullTime, int index) {
