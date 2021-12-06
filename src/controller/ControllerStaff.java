@@ -55,8 +55,19 @@ public class ControllerStaff implements Manager {
     }
 
     @Override
+    public void relativeDisplayStaff() {
+        System.out.println("Bạn muốn tìm ai?");
+        String name = scanner.nextLine();
+        for (Staff staff : staffList) {
+            if (staff.getName().contains(name)) {
+                System.out.println(staff.toString());
+            }
+        }
+    }
+
+    @Override
     public void searchStaff() {
-        System.out.println("Nhập tên nhân viên mà bạn muốn tìm: ");
+        System.out.println("Bạn muốn tìm ai? ");
         String name = scanner.nextLine();
         int index = -1;
         boolean check = false;
@@ -70,6 +81,7 @@ public class ControllerStaff implements Manager {
             System.out.println(staffList.get(index));
         } else {
             System.err.println("Nhân viên này không có trong danh sách!!!");
+            System.out.println("Rốt cuộc...");
             searchStaff();
         }
     }
@@ -172,9 +184,9 @@ public class ControllerStaff implements Manager {
             }
         }
 
+        int workTimeOnMonth = 0;
+        boolean checkWorkingOnMonth = true;
         if (isStaffFullTime) {
-            int workTimeOnMonth = 0;
-            boolean checkWorkingOnMonth = true;
             while (checkWorkingOnMonth) {
                 try {
                     System.out.println("Nhập số giờ làm việc trong tháng full time:");
@@ -212,8 +224,6 @@ public class ControllerStaff implements Manager {
             System.out.println("ĐÃ THÊM NHÂN VIÊN NÀY!!!");
             return new StaffFullTime(id, name, age, address, true, true, workTimeOnMonth, salaryOnHour);
         } else {
-            int workTimeOnMonth = 0;
-            boolean checkWorkingOnMonth = true;
             while (checkWorkingOnMonth) {
                 try {
                     System.out.println("Nhập số giờ làm việc trong tháng part time:");
@@ -306,9 +316,9 @@ public class ControllerStaff implements Manager {
             }
         }
 
+        int workTimeOnMonth = 0;
+        boolean checkWorkingOnMonth = true;
         if (isStaffFullTime) {
-            int workTimeOnMonth = 0;
-            boolean checkWorkingOnMonth = true;
             while (checkWorkingOnMonth) {
                 try {
                     System.out.println("Nhập số giờ làm việc trong tháng full time:");
@@ -346,8 +356,6 @@ public class ControllerStaff implements Manager {
             System.out.println("ĐÃ SỬA NHÂN VIÊN NÀY!!!");
             return new StaffFullTime(id, name, age, address, true, true, workTimeOnMonth, salaryOnHour);
         } else {
-            int workTimeOnMonth = 0;
-            boolean checkWorkingOnMonth = true;
             while (checkWorkingOnMonth) {
                 try {
                     System.out.println("Nhập số giờ làm việc trong tháng part time:");
@@ -412,7 +420,7 @@ public class ControllerStaff implements Manager {
                 }
                 break;
             } else {
-                System.err.println("Tên người có số hả mại?");
+                System.err.println("Tên người có số hả anh bạn?");
                 System.out.println("Rốt cuộc...");
             }
         }

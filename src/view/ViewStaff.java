@@ -66,11 +66,12 @@ public class ViewStaff {
                     + "7. Thay đổi trạng thái của nhân viên" + "\n"
                     + "8. Tính tiền lương của nhân viên" + "\n"
                     + "9. Phân loại nhân viên" + "\n"
+                    + "10. Hiển thị tương đối nhân viên" + "\n"
                     + "0. Đăng xuất");
             int choice = 0;
             try {
                 choice = Integer.parseInt(scanner.nextLine());
-                if (choice != 1 && choice != 2 && choice != 3 && choice != 4 && choice != 5 && choice != 6 && choice != 7 && choice != 8 && choice != 9 && choice != 0) {
+                if (choice != 1 && choice != 2 && choice != 3 && choice != 4 && choice != 5 && choice != 6 && choice != 7 && choice != 8 && choice != 9 && choice != 10 && choice != 0) {
                     System.err.println("Bạn chỉ có thể lựa chọn 0 đến 9");
                     return menuManagerStaff();
                 }
@@ -131,6 +132,9 @@ public class ViewStaff {
                     break;
                 case 9:
                     controllerStaff.employeeClassification();
+                    break;
+                case 10:
+                    controllerStaff.relativeDisplayStaff();
                     break;
                 case 0:
                     System.out.println("ĐÃ ĐĂNG XUẤT!!");

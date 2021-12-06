@@ -4,6 +4,7 @@ import model.Staff;
 
 public interface Manager {
     public void displayStaff();
+    public void relativeDisplayStaff();
     public void searchStaff();
     public void checkStatus();
     public void updateStatus();
