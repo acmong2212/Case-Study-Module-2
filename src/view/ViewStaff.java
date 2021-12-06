@@ -30,10 +30,14 @@ public class ViewStaff {
             }
             switch (choice) {
                 case 1:
-                    System.out.println("Nhập tên Account bạn muốn sửa: ");
+                    System.out.println("Bạn muốn sửa Account nào?: ");
                     int index = controllerAccount.findIndexAccount();
-                    controllerAccount.edit(index, controllerAccount.updateAccount());
-                    break;//validate
+                    if(index>-1){
+                        controllerAccount.edit(index, controllerAccount.updateAccount());
+                    } else {
+                        System.err.println("Không có Account này trong danh sách, chọn lại nhé!!");
+                    }
+                    break;
                 case 2:
                     controllerAccount.deleteAccount();
                     break;
@@ -41,7 +45,7 @@ public class ViewStaff {
                     controllerAccount.displayAccount();
                     break;
                 case 4:
-                    System.out.println("ĐÃ ĐĂNG XUẤT!!");
+                    System.out.println("BYE!!");
                     ViewAccount.menuSignInAndSignUp();
                     break;
             }
@@ -123,6 +127,8 @@ public class ViewStaff {
                     controllerStaff.updateStatus();
                     break;
                 case 8:
+                    controllerStaff.payRoll();
+                    break;
                 case 9:
                     controllerStaff.employeeClassification();
                     break;

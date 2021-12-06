@@ -74,11 +74,11 @@ public class Staff implements Serializable {
     @Override
     public String toString() {
         return
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", age=" + age +
-                ", address='" + address + '\'' +
-                ", status=" + status +
-                ", isClassify=" + isClassify + ", ";
+                "id= " + id +
+                ", name= " + name  +
+                ", age= " + age +
+                ", address= " + address +
+                ", status= " + status +
+                ", isClassify= " + isClassify + ", ";
     }
 }

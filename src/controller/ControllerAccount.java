@@ -84,20 +84,15 @@ public class ControllerAccount {
     }
 
     public void displayAccount() {
-        for (Account acc : accountList) {
-            System.out.println(acc.toString());
+        if (accountList.isEmpty()) {
+            System.err.println("Trống!!!");
         }
-    }
-
-    public int findIndexAccount() {
-        String userName = scanner.nextLine();
-        for (int i = 0; i < accountList.size(); i++) {
-            if (accountList.get(i).getUserName().equals(userName)) {
-                return i;
+        for (Account acc : accountList) {
+            if (accountList.size() > 0) {
+                System.out.println(acc.toString());
             }
         }
-        return -1;
-    }//validate
+    }
 
     public int findIndexAccountDelete() {
         String userName = scanner.nextLine();
@@ -110,18 +105,32 @@ public class ControllerAccount {
     }
 
     public void deleteAccount() {
-        System.out.println("Nhập tên Account bạn muốn xoá: ");
+        System.out.println("Bạn muốn xoá Account nào?: ");
         int index = findIndexAccountDelete();
         if (index >= 0) {
             accountList.remove(index);
             System.out.println("ĐÃ XOÁ ACCOUNT NÀY!!");
+        } else {
+            System.err.println("Không có Account này trong danh sách!!");
+            System.out.println("Rốt cuộc...");
+            deleteAccount();
         }
         ReadAndWriteAccount.writeAccount(accountList);
-    }//validate
+    }
 
     public void edit(int index, Account account) {
         accountList.set(index, account);
         ReadAndWriteAccount.writeAccount(accountList);
+    }
+
+    public int findIndexAccount() {
+        String userName = scanner.nextLine();
+        for (int i = 0; i < accountList.size(); i++) {
+            if (accountList.get(i).getUserName().equals(userName)) {
+                return i;
+            }
+        }
+        return -1;
     }
 
     public Account updateAccount() {
