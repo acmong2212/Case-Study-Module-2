@@ -11,8 +11,14 @@ public class ViewAccount {
         ControllerAccount controllerAccount = new ControllerAccount();
 
         while (true) {
-            System.out.println("1. Đăng nhập" + "\n"
-                    + "2. Đăng ký");
+            System.out.println(" ❁ ❁ ❁ ❁ ❁ ❁ ❁ ❁ ❁ ❁ ❁ ❁ ❁ ❁ ❁ ❁ ❁");
+            System.out.println(" ❁                                      ❁");
+            System.out.println(" ❁           1. Đăng nhập               ❁");
+            System.out.println(" ❁                 hay                  ❁");
+            System.out.println(" ❁           2. Đăng ký                 ❁");
+            System.out.println(" ❁                                      ❁");
+            System.out.println(" ❁ ❁ ❁ ❁ ❁ ❁ ❁ ❁ ❁ ❁ ❁ ❁ ❁ ❁ ❁ ❁ ❁");
+            System.out.println("Bạn định làm gì tôi? ᕦ(ò_óˇ)ᕤ");
             int choice = 0;
             try {
                 choice = Integer.parseInt(scanner.nextLine());

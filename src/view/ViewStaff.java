@@ -13,10 +13,19 @@ public class ViewStaff {
         ControllerAccount controllerAccount = new ControllerAccount();
 
         while (true) {
-            System.out.println("1. Sửa Account" + "\n"
-                    + "2. Xoá Account" + "\n"
-                    + "3. Hiển thị Account" + "\n"
-                    + "4. Đăng xuất");
+            System.out.println("ᓚᘏᗢ ᓚᘏᗢ ᓚᘏᗢ ᓚᘏᗢ ᓚᘏᗢ ᓚᘏᗢ ᓚᘏᗢ ᓚᘏᗢ ᓚᘏᗢ ᓚᘏᗢ ᓚᘏᗢ ᓚᘏᗢ ᓚᘏᗢ ᓚᘏᗢ ᓚᘏᗢ ᓚᘏᗢ ᓚᘏᗢ ᓚᘏᗢ ᓚᘏᗢ ᓚᘏᗢ ᓚᘏᗢ ᓚᘏᗢ ᓚᘏᗢ ᓚᘏᗢ ᓚᘏᗢ ");
+            System.out.println("ᓚᘏᗢ ᓚᘏᗢ ᓚᘏᗢ ᓚᘏᗢ ᓚᘏᗢ ᓚᘏᗢ ᓚᘏᗢ ᓚᘏᗢ ᓚᘏᗢ ᓚᘏᗢ ᓚᘏᗢ ᓚᘏᗢ ᓚᘏᗢ ᓚᘏᗢ ᓚᘏᗢ ᓚᘏᗢ ᓚᘏᗢ ᓚᘏᗢ ᓚᘏᗢ ᓚᘏᗢ ᓚᘏᗢ ᓚᘏᗢ ᓚᘏᗢ ᓚᘏᗢ ᓚᘏᗢ ");
+            System.out.println("ᓚᘏᗢ ᓚᘏᗢ                                                                                                  ᓚᘏᗢ ᓚᘏᗢ ");
+            System.out.println("ᓚᘏᗢ ᓚᘏᗢ                                            BẠN LÀ ADMIN  ヾ(⌐■_■)ノ♪                              ᓚᘏᗢ ᓚᘏᗢ ");
+            System.out.println("ᓚᘏᗢ ᓚᘏᗢ                                                                                                  ᓚᘏᗢ ᓚᘏᗢ ");
+            System.out.println("ᓚᘏᗢ ᓚᘏᗢ                                      1. Sửa Account                                              ᓚᘏᗢ ᓚᘏᗢ ");
+            System.out.println("ᓚᘏᗢ ᓚᘏᗢ                                      2. Xoá Account                                              ᓚᘏᗢ ᓚᘏᗢ ");
+            System.out.println("ᓚᘏᗢ ᓚᘏᗢ                                      3. Hiển thị Account                                         ᓚᘏᗢ ᓚᘏᗢ ");
+            System.out.println("ᓚᘏᗢ ᓚᘏᗢ                                      4. Đăng xuất                                                ᓚᘏᗢ ᓚᘏᗢ ");
+            System.out.println("ᓚᘏᗢ ᓚᘏᗢ                                                                                                  ᓚᘏᗢ ᓚᘏᗢ ");
+            System.out.println("ᓚᘏᗢ ᓚᘏᗢ ᓚᘏᗢ ᓚᘏᗢ ᓚᘏᗢ ᓚᘏᗢ ᓚᘏᗢ ᓚᘏᗢ ᓚᘏᗢ ᓚᘏᗢ ᓚᘏᗢ ᓚᘏᗢ ᓚᘏᗢ ᓚᘏᗢ ᓚᘏᗢ ᓚᘏᗢ ᓚᘏᗢ ᓚᘏᗢ ᓚᘏᗢ ᓚᘏᗢ ᓚᘏᗢ ᓚᘏᗢ ᓚᘏᗢ ᓚᘏᗢ ᓚᘏᗢ ");
+            System.out.println("ᓚᘏᗢ ᓚᘏᗢ ᓚᘏᗢ ᓚᘏᗢ ᓚᘏᗢ ᓚᘏᗢ ᓚᘏᗢ ᓚᘏᗢ ᓚᘏᗢ ᓚᘏᗢ ᓚᘏᗢ ᓚᘏᗢ ᓚᘏᗢ ᓚᘏᗢ ᓚᘏᗢ ᓚᘏᗢ ᓚᘏᗢ ᓚᘏᗢ ᓚᘏᗢ ᓚᘏᗢ ᓚᘏᗢ ᓚᘏᗢ ᓚᘏᗢ ᓚᘏᗢ ᓚᘏᗢ ");
+            System.out.println("Chọn 1 hành động: ");
             int choice = 0;
             try {
                 choice = Integer.parseInt(scanner.nextLine());
@@ -45,7 +54,7 @@ public class ViewStaff {
                     controllerAccount.displayAccount();
                     break;
                 case 4:
-                    System.out.println("BYE!!");
+                    System.out.println("( ﾟдﾟ)つ Bye!!");
                     ViewAccount.menuSignInAndSignUp();
                     break;
             }
@@ -56,18 +65,27 @@ public class ViewStaff {
         ControllerStaff controllerStaff = new ControllerStaff();
 
         while (true) {
-            System.out.println("-----Quản lý nhân viên-----" + "\n"
-                    + "1. Hiển thị nhân viên" + "\n"
-                    + "2. Thêm nhân viên" + "\n"
-                    + "3. Sửa nhân viên" + "\n"
-                    + "4. Xoá nhân viên" + "\n"
-                    + "5. Tìm kiếm nhân viên" + "\n"
-                    + "6. Kiểm tra trạng thái làm việc của nhân viên" + "\n"
-                    + "7. Thay đổi trạng thái làm việc của nhân viên" + "\n"
-                    + "8. Tính tiền lương của nhân viên" + "\n"
-                    + "9. Phân loại nhân viên" + "\n"
-                    + "10. Hiển thị tương đối nhân viên" + "\n"
-                    + "0. Đăng xuất");
+            System.out.println("† † † † † † † † † † † † † † † † † † † † † † † † † † † † † † † † † † † † † † † † † † † † † † † † † ");
+            System.out.println("† † † † † † † † † † † † † † † † † † † † † † † † † † † † † † † † † † † † † † † † † † † † † † † † † ");
+            System.out.println("† †                                                                                           † † ");
+            System.out.println("† †                                 QUẢN LÝ NHÂN VIÊN  ヽ(✿ﾟ▽ﾟ)ノ                              † † ");
+            System.out.println("† †                                                                                           † † ");
+            System.out.println("† †                             1. Hiển thị nhân viên                                         † † ");
+            System.out.println("† †                             2. Thêm nhân viên                                             † † ");
+            System.out.println("† †                             3. Sửa nhân viên                                              † † ");
+            System.out.println("† †                             4. Xoá nhân viên                                              † † ");
+            System.out.println("† †                             5. Tìm kiếm nhân viên                                         † † ");
+            System.out.println("† †                             6. Kiểm tra trạng thái làm việc của nhân viên                 † † ");
+            System.out.println("† †                             7. Thay đổi trạng thái làm việc của nhân viên                 † † ");
+            System.out.println("† †                             8. Tính tiền lương của nhân viên                              † † ");
+            System.out.println("† †                             9. Phân loại nhân viên                                        † † ");
+            System.out.println("† †                             10. Hiển thị tương đối nhân viên                              † † ");
+            System.out.println("† †                             0. Đăng xuất                                                  † † ");
+            System.out.println("† †                                                                                           † † ");
+            System.out.println("† † † † † † † † † † † † † † † † † † † † † † † † † † † † † † † † † † † † † † † † † † † † † † † † † ");
+            System.out.println("† † † † † † † † † † † † † † † † † † † † † † † † † † † † † † † † † † † † † † † † † † † † † † † † † ");
+            System.out.println("Hãy nhập gì đó: ");
+
             int choice = 0;
             try {
                 choice = Integer.parseInt(scanner.nextLine());
@@ -84,11 +102,17 @@ public class ViewStaff {
                     controllerStaff.displayStaff();
                     break;
                 case 2:
-                    System.out.println("Bạn muốn thêm?" + "\n"
-                            + "1. Nhân viên Full Time" + "\n"
-                            + "2. Nhân viên Part Time " + "\n"
-                            + "3. Quay lại màn hình chính" + "\n"
-                            + "4. Đăng xuất");
+                    System.out.println(" ✿ ✿ ✿ ✿ ✿ ✿ ✿ ✿ ✿ ✿ ✿ ✿ ✿ ✿ ✿ ✿ ✿ ✿ ✿ ✿ ✿ ✿");
+                    System.out.println(" ✿                                                   ✿");
+                    System.out.println(" ✿                  Bạn muốn thêm?                   ✿");
+                    System.out.println(" ✿                                                   ✿");
+                    System.out.println(" ✿          1. Nhân viên Full Time                   ✿");
+                    System.out.println(" ✿          2. Nhân viên Part Time                   ✿");
+                    System.out.println(" ✿          3. Quay lại màn hình chính               ✿");
+                    System.out.println(" ✿          4. Đăng xuất                             ✿");
+                    System.out.println(" ✿                                                   ✿");
+                    System.out.println(" ✿ ✿ ✿ ✿ ✿ ✿ ✿ ✿ ✿ ✿ ✿ ✿ ✿ ✿ ✿ ✿ ✿ ✿ ✿ ✿ ✿ ✿");
+                    System.out.println("Bạn định làm gì tôi? ᕦ(ò_óˇ)ᕤ");
                     int choiceAdd = 0;
                     try {
                         choiceAdd = Integer.parseInt(scanner.nextLine());
@@ -148,7 +172,7 @@ public class ViewStaff {
                     controllerStaff.relativeDisplayStaff();
                     break;
                 case 0:
-                    System.out.println("ĐÃ ĐĂNG XUẤT!!");
+                    System.out.println("( ﾟдﾟ)つ Bye!!");
                     ViewAccount.menuSignInAndSignUp();
                     break;
             }

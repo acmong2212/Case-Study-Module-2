@@ -4,6 +4,7 @@ import io.ReadAndWriteStaff;
 import model.Staff;
 import model.StaffFullTime;
 import model.StaffPartTime;
+import view.ViewStaff;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,6 +52,12 @@ public class ControllerStaff implements Manager {
             if (staffList.size() > 0) {
                 System.out.println(s.toString());
             }
+        }
+        System.out.println("");
+        System.out.println("Nhấn 0 để quay lại màn hình chính");
+        int choice = Integer.parseInt(scanner.nextLine());
+        if (choice == 0) {
+            ViewStaff.menuManagerStaff();
         }
     }
 
@@ -390,6 +397,7 @@ public class ControllerStaff implements Manager {
             }
 
             System.out.println("ĐÃ SỬA NHÂN VIÊN NÀY!!!");
+
             return new StaffPartTime(id, name, age, address, true, false, workTimeOnMonth, salaryOnHour);
         }
     }
@@ -434,15 +442,16 @@ public class ControllerStaff implements Manager {
         for (Staff staff : staffList) {
             if (staff.getName().equals(name)) {
                 if (staff.isClassify()) {
-                    System.out.println("Lương full time của nhân viên " + name + " là " + ((StaffFullTime) staff).getPayRoll() + " VNĐ");
+                    System.out.println("");
+                    System.out.println("Lương full time của nhân viên " + "'" + name + "'" + " là " + ((StaffFullTime) staff).getPayRoll() + " VNĐ");
+                    System.out.println("");
                 } else {
-                    System.out.println("Lương part time của nhân viên " + name + " là " + ((StaffPartTime) staff).getPayRoll() + " VNĐ");
+                    System.out.println("");
+                    System.out.println("Lương part time của nhân viên " + "'" + name + "'" + " là " + ((StaffPartTime) staff).getPayRoll() + " VNĐ");
+                    System.out.println("");
                 }
                 return;
-            } else {
-                System.err.println("Không có nhân viên này trong công ty!!");
             }
-            return;
         }
     }
 
@@ -458,9 +467,13 @@ public class ControllerStaff implements Manager {
             }
         }
         if (check) {
+            System.out.println("");
             System.out.println("Nhân viên " + "'" + name + "'" + " đang làm full time");
+            System.out.println("");
         } else {
+            System.out.println("");
             System.out.println("Nhân viên " + "'" + name + "'" + " đang làm part time");
+            System.out.println("");
         }
     }
 }
