@@ -50,9 +50,9 @@ public class StaffPartTime extends Staff {
     @Override
     public String toString() {
         DecimalFormat formatter = new DecimalFormat("###,###,###");
-        return "Staff PartTime{" + super.toString() +
-                "workingTimeOnMonth= " + workingTimeOnMonth +
-                ", salaryOnHour= " +formatter.format(salaryOnHour)+" VNĐ" +
-                '}';
+        return super.toString() + "," +
+                "Staff PartTime" + "," +
+                workingTimeOnMonth + "," +
+                formatter.format(salaryOnHour)+" VNĐ";
     }
 }

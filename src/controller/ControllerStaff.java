@@ -45,19 +45,34 @@ public class ControllerStaff implements Manager {
 
     @Override
     public void displayStaff() {
+        System.out.format("%-10s %-10s %-10s %-10s %-10s %-20s %-25s %-10s\n",
+                "ID", "Name", "Age", "Address", "Status", "Chức vụ", "Working Time On Month", "Salary On Hour");
+        staffList = ReadAndWriteStaff.readStaff();
+        assert staffList != null;
+        for (Staff staff : staffList) {
+            String[] line = staff.toString().split(",");
+            System.out.format("%-10s %-10s %-10s %-10s %-10s %-20s %-25s %-10s\n",
+                    line[0], line[1], line[2], line[3], line[4], line[5], line[6], line[7]);
+        }
         if (staffList.isEmpty()) {
             System.err.println("Trống!!!");
         }
-        for (Staff s : staffList) {
-            if (staffList.size() > 0) {
-                System.out.println(s.toString());
+        int choice = 0;
+        boolean check = true;
+        while (check) {
+            try {
+                System.out.println("");
+                System.out.println("Nhấn 0 để quay lại màn hình chính");
+                choice = Integer.parseInt(scanner.nextLine());
+                if (choice == 0) {
+                    ViewStaff.menuManagerStaff();
+                    check = false;
+                } else {
+                    System.err.println("Bảo nhập 0 mà cứ nhập cái gì đâu");
+                }
+            } catch (Exception e) {
+                System.err.println("Số 0 là chữ à?");
             }
-        }
-        System.out.println("");
-        System.out.println("Nhấn 0 để quay lại màn hình chính");
-        int choice = Integer.parseInt(scanner.nextLine());
-        if (choice == 0) {
-            ViewStaff.menuManagerStaff();
         }
     }
 
@@ -67,7 +82,13 @@ public class ControllerStaff implements Manager {
         String name = scanner.nextLine();
         for (Staff staff : staffList) {
             if (staff.getName().contains(name)) {
-                System.out.println(staff.toString());
+                System.out.format("%-10s %-10s %-10s %-10s %-10s %-20s %-25s %-10s\n",
+                        "ID", "Name", "Age", "Address", "Status", "Chức vụ", "Working Time On Month", "Salary On Hour");
+                staffList = ReadAndWriteStaff.readStaff();
+                assert staffList != null;
+                String[] line = staff.toString().split(",");
+                System.out.format("%-10s %-10s %-10s %-10s %-10s %-20s %-25s %-10s\n",
+                        line[0], line[1], line[2], line[3], line[4], line[5], line[6], line[7]);
             }
         }
     }
@@ -85,7 +106,13 @@ public class ControllerStaff implements Manager {
             }
         }
         if (check) {
-            System.out.println(staffList.get(index));
+            System.out.format("%-10s %-10s %-10s %-10s %-10s %-20s %-25s %-10s\n",
+                    "ID", "Name", "Age", "Address", "Status", "Chức vụ", "Working Time On Month", "Salary On Hour");
+            staffList = ReadAndWriteStaff.readStaff();
+            String[] line = staffList.get(index).toString().split(",");
+            System.out.format("%-10s %-10s %-10s %-10s %-10s %-20s %-25s %-10s\n",
+                    line[0], line[1], line[2], line[3], line[4], line[5], line[6], line[7]);
+            System.out.println("");
         } else {
             System.err.println("Làm gì có");
             System.out.println("Rốt cuộc...");
@@ -397,7 +424,6 @@ public class ControllerStaff implements Manager {
             }
 
             System.out.println("ĐÃ SỬA NHÂN VIÊN NÀY!!!");
-
             return new StaffPartTime(id, name, age, address, true, false, workTimeOnMonth, salaryOnHour);
         }
     }
