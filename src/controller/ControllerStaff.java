@@ -279,6 +279,7 @@ public class ControllerStaff implements Manager {
             }
 
             System.out.println("ĐÃ THÊM NHÂN VIÊN NÀY!!!");
+            System.out.println("");
             return new StaffFullTime(id, name, age, address, true, true, workTimeOnMonth, salaryOnHour);
         } else {
             while (checkWorkingOnMonth) {
@@ -314,6 +315,7 @@ public class ControllerStaff implements Manager {
             }
 
             System.out.println("ĐÃ THÊM NHÂN VIÊN NÀY!!!");
+            System.out.println("");
             return new StaffPartTime(id, name, age, address, true, false, workTimeOnMonth, salaryOnHour);
         }
     }
